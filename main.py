@@ -1,24 +1,25 @@
 import telebot
 import os
 from flask import Flask
+import threading
 
 API_TOKEN = '7853238610:AAG1SOXqfetg36_rbtVmWw5ZQSTlSoDlNuc'
 MY_ID = 288677626
 
 bot = telebot.TeleBot(API_TOKEN)
 
-@bot.message_handler(func=lambda message: True)
-def forward_to_me(message):
+# هندلر برای تمام پیام‌ها (متن، عکس، ویدیو، ویس و...)
+@bot.message_handler(content_types=['text', 'photo', 'video', 'document', 'audio', 'voice', 'sticker'])
+def forward_all(message):
     try:
         bot.forward_message(MY_ID, message.chat.id, message.message_id)
     except Exception as e:
         print(f"Error forwarding message: {e}")
 
-# شروع Polling در یک Thread جداگانه
-import threading
+# اجرای ربات در پس‌زمینه
 threading.Thread(target=bot.polling, daemon=True).start()
 
-# Flask برای باز کردن پورت (فقط برای خوشحال کردن Render!)
+# اجرای Flask برای Render
 app = Flask(__name__)
 
 @app.route('/')
