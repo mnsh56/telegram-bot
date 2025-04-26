@@ -8,10 +8,10 @@ MY_ID = 288677626
 
 bot = telebot.TeleBot(API_TOKEN)
 
-# قبل از شروع polling، Webhook قبلی رو حذف کن
+# حذف Webhook قبلی
 bot.remove_webhook()
 
-# هندلر برای تمام پیام‌ها (متن، عکس، ویدیو، ویس و...)
+# هندلر برای تمام پیام‌ها
 @bot.message_handler(content_types=['text', 'photo', 'video', 'document', 'audio', 'voice', 'sticker'])
 def forward_all(message):
     try:
@@ -20,7 +20,10 @@ def forward_all(message):
         print(f"Error forwarding message: {e}")
 
 # اجرای ربات در پس‌زمینه
-threading.Thread(target=bot.polling, daemon=True).start()
+def start_bot():
+    bot.infinity_polling()
+
+threading.Thread(target=start_bot, daemon=True).start()
 
 # اجرای Flask برای Render
 app = Flask(_name_)
@@ -29,5 +32,6 @@ app = Flask(_name_)
 def home():
     return "Bot is running!"
 
-port = int(os.environ.get("PORT", 5000))
-app.run(host="0.0.0.0", port=port)
+if _name_ == '_main_':
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
