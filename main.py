@@ -8,10 +8,7 @@ MY_ID = 288677626
 
 bot = telebot.TeleBot(API_TOKEN)
 
-# حذف Webhook قبلی
-bot.remove_webhook()
-
-# هندلر برای تمام پیام‌ها
+# هندلر برای تمام پیام‌ها (متن، عکس، ویدیو، ویس و...)
 @bot.message_handler(content_types=['text', 'photo', 'video', 'document', 'audio', 'voice', 'sticker'])
 def forward_all(message):
     try:
@@ -32,6 +29,5 @@ app = Flask(__name__)
 def home():
     return "Bot is running!"
 
-if name == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+port = int(os.environ.get("PORT", 5000))
+app.run(host="0.0.0.0", port=port)
