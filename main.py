@@ -3,7 +3,7 @@ import os
 from flask import Flask
 import threading
 
-API_TOKEN = '7853238610:AAG1SOXqfetg36_rbtVmWw5ZQSTlSoDlNuc'
+API_TOKEN = '7321420386:AAEA-s-fiuGG_P-rh8zTVT9INV5zVAxoXdI'
 MY_ID = 288677626
 
 bot = telebot.TeleBot(API_TOKEN)
@@ -23,11 +23,11 @@ def start_bot():
 threading.Thread(target=start_bot, daemon=True).start()
 
 # اجرای Flask برای Render
-app = Flask(__name__)
+app = Flask(_name_)
 
 @app.route('/')
 def home():
     return "Bot is running!"
 
 port = int(os.environ.get("PORT", 5000))
-app.run(host="0.0.0.0", port=port)
+app.run(host="0.0.0.0", port=port)
