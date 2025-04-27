@@ -23,7 +23,7 @@ def start_bot():
 threading.Thread(target=start_bot, daemon=True).start()
 
 # اجرای Flask برای Render
-app = Flask(_name_)
+app = Flask(__name__)
 
 @app.route('/')
 def home():
