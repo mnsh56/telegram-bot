@@ -3,7 +3,7 @@ import os
 from flask import Flask
 import threading
 
-API_TOKEN = '7321420386:AAEA-s-fiuGG_P-rh8zTVT9INV5zVAxoXdI'
+API_TOKEN = '7728757934:AAEnwT9-qzgzjOg3tSY-fCT5dqcEoGRgnUA'
 MY_ID = 288677626
 
 bot = telebot.TeleBot(API_TOKEN)
@@ -30,4 +30,4 @@ def home():
     return "Bot is running!"
 
 port = int(os.environ.get("PORT", 5000))
-app.run(host="0.0.0.0", port=port)
+app.run(host="0.0.0.0", port=port)
