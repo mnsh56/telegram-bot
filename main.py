@@ -3,7 +3,7 @@ import os
 from flask import Flask
 import threading
 
-API_TOKEN = '7699625930:AAFr_iOZLRBhMjuq-y328hi_NrRzrCu7T6Y'
+API_TOKEN = '8167267318:AAHcR2pIin_QBlXidJuVL4KdF3r3x_BE5Gc'
 MY_ID = 288677626
 
 bot = telebot.TeleBot(API_TOKEN)
